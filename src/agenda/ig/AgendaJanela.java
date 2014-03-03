@@ -159,8 +159,13 @@ public class AgendaJanela {
 				String n =textField_NomeCadastrar.getText();
 				String t = textField_TelefoneCadastrar.getText();
 				Contato c = new Contato(n,t);
-				agenda.adicionarContato(c);
-				JOptionPane.showMessageDialog(null,"Contato Adicionado\n"+c.toString());
+				try{
+					agenda.adicionarContato(c);
+					JOptionPane.showMessageDialog(null,"Contato Adicionado\n"+c.toString());
+				}catch(Exception e){
+					JOptionPane.showMessageDialog(null,e.getMessage());
+				}
+				
 				textField_NomeCadastrar.setText("");
 				textField_TelefoneCadastrar.setText("");
 				

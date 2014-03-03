@@ -13,8 +13,27 @@ public class Agenda implements Serializable {
 	}
 	
 	public void adicionarContato(Contato c){
+		
+		validarContato(c);
 		this.contatos.add(c);
 	}
+	private void validarContato(Contato c1) {
+		// TODO Auto-generated method stub
+		for(Contato c : contatos){
+			if(c.getTelefone().equals(c1.getTelefone())){
+				throw new RuntimeException("Já existe um contato com este telefone");
+			}else if(c.getNome().equals(c1.getNome())){
+				throw new RuntimeException("Já existe um contato com este nome");
+			}
+			
+		}
+		
+	}
+
+	
+
+	
+
 	public void removerContatoPeloNome(String nome){
 		boolean removeu = false;
 		for(Contato c : this.contatos){
